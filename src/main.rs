@@ -134,7 +134,7 @@ fn setup_cors() -> CorsLayer {
     CorsLayer::new()
         // Home should be the only website that accesses the API, bots and scripts do not trigger CORS AFAIK.
         // This lets us restrict who has access to what in the API on the Home frontend.
-        .allow_origin(HeaderValue::from_static("https://home.amfoss.in"))
+        .allow_origin(vec![HeaderValue::from_static("https://home.amfoss.in"), HeaderValue::from_static("http://127.0.0.1")])
         .allow_methods([Method::GET, Method::POST, Method::OPTIONS])
         .allow_headers(tower_http::cors::Any)
 }
