@@ -57,3 +57,26 @@ pub struct AttendanceWithMember {
     pub name: String,
     pub year: i32,
 }
+
+// This struct is used to get the Lab count of a date
+#[derive(SimpleObject)]
+pub struct DailyCount {
+    pub date: String,
+    pub count: i64,
+}
+
+// This struct is used to fetch the attended lab of each member
+#[derive(SimpleObject)]
+pub struct MemberAttendanceSummary {
+    pub id: i32,
+    pub name: String,
+    pub present_days: i64,
+}
+
+// This struct is used for getting the combined Attendance report
+#[derive(SimpleObject)]
+pub struct AttendanceReport {
+    pub daily_count: Vec<DailyCount>,
+    pub member_attendance: Vec<MemberAttendanceSummary>,
+    pub max_days: i64,
+}
